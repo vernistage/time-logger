@@ -1,12 +1,12 @@
-// parent compononent
+/* parent compononent*/
 const TimersDashboard = React.createClass({
   render: function () {
     return (
       <div className='ui three column centered grid'>
         <div className='column'>
-          // immediate children
+          {/* immediate children */}
           <EditableTimerList />
-          // TimersDashboard passing one prop down: isOpen
+          {/* TimersDashboard passing one prop down: isOpen */}
           <ToggleableTimerForm
             isOpen={true}
           />
@@ -16,13 +16,13 @@ const TimersDashboard = React.createClass({
   },
 });
 
-// immediate child compononent
+/* immediate child compononent*/
 const EditableTimerList = React.createClass({
   render: function () {
     return (
       <div id='timers'>
-        // immediate child
-        // passing down props to each child
+        {/* immediate child*/}
+        {/* passing down props to each child*/}
         <EditableTimer
           title='Learn React'
           project='Web Domination'
@@ -42,15 +42,15 @@ const EditableTimerList = React.createClass({
   },
 });
 
-// child of immediate child compononent
+/* child of immediate child compononent*/
 const EditableTimer = React.createClass({
   render: function () {
-    // checking props passed from EditableTimerList
+    {/* checking props passed from EditableTimerList*/}
     if (this.props.editFormOpen) {
       return (
-        // inheriting props from editabletimer set by editabletimerlist
+        /* inheriting props from editabletimer set by editabletimerlist */
+        /* this is container class, not timerform */
         <TimerForm
-        // 'this' is container class, not timerform
           title={this.props.title}
           project={this.props.project}
         />
@@ -68,10 +68,10 @@ const EditableTimer = React.createClass({
   },
 });
 
-// child component of editable timer
+/* child component of editable timer*/
 const TimerForm = React.createClass({
   render: function () {
-    // check to see if title already exists
+    /* check to see if title already exists*/
     const submitText = this.props.title ? 'Update' : 'Create';
     return (
       <div className='ui centered card'>
@@ -79,7 +79,7 @@ const TimerForm = React.createClass({
           <div className='ui form'>
             <div className='field'>
               <label> Title </label>
-              // passing down props from editable timer that came from ancestors
+              {/* passing down props from editable timer that came from ancestors*/}
               <input type='text' defaultValue={this.props.title} />
             </div>
             <div className='field'>
@@ -88,10 +88,10 @@ const TimerForm = React.createClass({
             </div>
             <div className='ui two bottom attached buttons'>
               <button className='ui basic blue button'>
-              // variable defined above
+              {/* variable defined above*/}
                 {submitText}
               </button>
-              <button classNAme='ui basic red button'>
+              <button className='ui basic red button'>
                 Cancel
               </button>
             </div>
@@ -102,19 +102,19 @@ const TimerForm = React.createClass({
   },
 });
 
-// immediate child but also 'wrapper component'
+/* immediate child but also 'wrapper component'*/
 const ToggleableTimerForm = React.createClass({
   render: function () {
     if (this.props.isOpen) {
       return (
-        // returning a child of its sibling
+        /* returning a child of its sibling*/
         <TimerForm />
       );
     } else {
       return (
         <div className='ui basic content center aligned segment'>
           <button className='ui basic button icon'>
-          // addition icon as button
+          /* addition icon as button*/
             <i className='plus icon'></i>
           </button>
         </div>
@@ -123,16 +123,16 @@ const ToggleableTimerForm = React.createClass({
   },
 });
 
-// child of editable timer and sibling of timerform
+/* child of editable timer and sibling of timerform*/
 const Timer = React.createClass({
   render: function () {
-    // probably pulling function from helpers
+    /* probably pulling function from helpers*/
     const elapsedString = helpers.renderElapsedString(this.props.elapsed);
     return (
       <div className='ui centered card'>
         <div className='content'>
           <div className='header'>
-          // getting properties from editable timer which is getting them from list
+          {/* getting properties from editable timer which is getting them from list */}
             {this.props.title}
           </div>
           <div className='meta'>
@@ -160,7 +160,7 @@ const Timer = React.createClass({
   }
 })
 
-// BEGIN RENDERING
+/* BEGIN RENDERING */
 ReactDOM.render(
   <TimersDashboard />,
   document.getElementById('content')
