@@ -159,3 +159,9 @@ const Timer = React.createClass({
     )
   }
 })
+
+// BEGIN RENDERING
+ReactDOM.render(
+  <TimersDashboard />,
+  document.getElementById('content')
+);
