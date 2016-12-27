@@ -67,3 +67,36 @@ const EditableTimer = React.createClass({
     }
   },
 });
+
+// child component of editable timer
+const TimerForm = React.createClass({
+  render: function () {
+    // check to see if title already exists
+    const submitText = this.props.title ? 'Update' : 'Create';
+    return (
+      <div className='ui centered card'>
+        <div className='content'>
+          <div className='ui form'>
+            <div className='field'>
+              <label> Title </label>
+              // passing down props from editable timer that came from ancestors
+              <input type='text' defaultValue={this.props.title} />
+            </div>
+            <div className='field'>
+              <label> Project </label>
+              <input type='text' defaultValue={this.props.project} />
+            </div>
+            <div className='ui two bottom attached buttons'>
+              <button className='ui basic blue button'>
+                {submitText}
+              </button>
+              <button classNAme='ui basic red button'>
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  },
+});
