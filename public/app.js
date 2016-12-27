@@ -88,6 +88,7 @@ const TimerForm = React.createClass({
             </div>
             <div className='ui two bottom attached buttons'>
               <button className='ui basic blue button'>
+              // variable defined above
                 {submitText}
               </button>
               <button classNAme='ui basic red button'>
@@ -98,5 +99,26 @@ const TimerForm = React.createClass({
         </div>
       </div>
     );
+  },
+});
+
+// immediate child but also 'wrapper component'
+const ToggleableTimerForm = React.createClass({
+  render: function () {
+    if (this.props.isOpen) {
+      return (
+        // returning a child of its sibling
+        <TimerForm />
+      );
+    } else {
+      return (
+        <div className='ui basic content center aligned segment'>
+          <button className='ui basic button icon'>
+          // addition icon as button
+            <i className='plus icon'></i>
+          </button>
+        </div>
+      );
+    }
   },
 });
