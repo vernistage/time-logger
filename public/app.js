@@ -60,13 +60,20 @@ const EditableTimerList = React.createClass({
 
 /* child of immediate child compononent*/
 const EditableTimer = React.createClass({
+  /* STATE */
+  getInitialState: function() {
+    return {
+      editFormOpen: false,
+    };
+  },
   render: function () {
     {/* checking props passed from EditableTimerList*/}
-    if (this.props.editFormOpen) {
+    if (this.state.editFormOpen) {
       return (
         /* inheriting props from editabletimer set by editabletimerlist */
         /* this is container class, not timerform */
         <TimerForm
+          id={this.props.id}
           title={this.props.title}
           project={this.props.project}
         />
@@ -74,6 +81,7 @@ const EditableTimer = React.createClass({
     } else {
       return (
         <Timer
+          id={this.props.id}
           title={this.props.title}
           project={this.props.project}
           elapsed={this.props.elapsed}
