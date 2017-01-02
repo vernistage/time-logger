@@ -1,14 +1,35 @@
 /* parent compononent*/
 const TimersDashboard = React.createClass({
+  getInitialState: function () {
+    return {
+      timers: [
+        {
+          title: 'Practice squat',
+          project: 'Gym Chores',
+          id: uuid.v4(),
+          elapsed: 5456099,
+          runningSince: Date.now(),
+        },
+        {
+          title: 'Bake squash',
+          project: 'Kitchen Chores',
+          id: uuid.v4(),
+          elapsed: 1273998,
+          runningSince: null,
+        },
+      ],
+    },
+  },
   render: function () {
     return (
       <div className='ui three column centered grid'>
         <div className='column'>
           {/* immediate children */}
           <EditableTimerList />
-          {/* TimersDashboard passing one prop down: isOpen */}
+          {/* TimersDashboard passing one prop down: isOpen
+            STATE */}
           <ToggleableTimerForm
-            isOpen={true}
+            isOpen={false}
           />
         </div>
       </div>
@@ -22,7 +43,8 @@ const EditableTimerList = React.createClass({
     return (
       <div id='timers'>
         {/* immediate child*/}
-        {/* passing down props to each child*/}
+        {/* passing down props to each child
+          STATE */}
         <EditableTimer
           title='Learn React'
           project='Web Domination'
@@ -114,7 +136,7 @@ const ToggleableTimerForm = React.createClass({
       return (
         <div className='ui basic content center aligned segment'>
           <button className='ui basic button icon'>
-          /* addition icon as button*/
+          {/* addition icon as button*/}
             <i className='plus icon'></i>
           </button>
         </div>
