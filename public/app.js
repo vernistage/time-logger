@@ -18,15 +18,17 @@ const TimersDashboard = React.createClass({
           runningSince: null,
         },
       ],
-    },
+    };
   },
   render: function () {
     return (
       <div className='ui three column centered grid'>
         <div className='column'>
           {/* immediate children */}
-          <EditableTimerList />
-          {/* TimersDashboard passing one prop down: isOpen
+          <EditableTimerList
+            timers={this.state.timers}
+          />
+          {/* TimersDashboard passing down: isOpen and timers as props
             STATE */}
           <ToggleableTimerForm
             isOpen={false}
@@ -60,7 +62,7 @@ const EditableTimerList = React.createClass({
 
 /* child of immediate child compononent*/
 const EditableTimer = React.createClass({
-  /* STATE */
+  /* form starts off as closed STATE */
   getInitialState: function() {
     return {
       editFormOpen: false,
@@ -128,8 +130,17 @@ const TimerForm = React.createClass({
 
 /* immediate child but also 'wrapper component'*/
 const ToggleableTimerForm = React.createClass({
+  /* STATE form is initially closed */
+  getInitialState: function () {
+    return {
+      isOpen: false,
+    };
+  },
+  handleFormOpen: function () {
+    this.setState({ isOpen: true });
+  },
   render: function () {
-    if (this.props.isOpen) {
+    if (this.state.isOpen) {
       return (
         /* returning a child of its sibling*/
         <TimerForm />
@@ -137,8 +148,10 @@ const ToggleableTimerForm = React.createClass({
     } else {
       return (
         <div className='ui basic content center aligned segment'>
-          <button className='ui basic button icon'>
-          {/* addition icon as button*/}
+          <button
+            className='ui basic button icon'
+            onClick={this.handleFormOpen}
+          >
             <i className='plus icon'></i>
           </button>
         </div>
