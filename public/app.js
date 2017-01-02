@@ -52,23 +52,7 @@ const EditableTimerList = React.createClass({
     ));
     return (
       <div id='timers'>
-        {/* immediate child*/}
-        {/* passing down props to each child
-          STATE */}
-        <EditableTimer
-          title='Learn React'
-          project='Web Domination'
-          elapsed='8986300'
-          runningSince={null}
-          editFormOpen={false}
-        />
-        <EditableTimer
-          title='Learn extreme ironing'
-          project='World Domination'
-          elapsed='3890985'
-          runningSince={null}
-          editFormOpen={true}
-        />
+        {timers}
       </div>
     );
   },
