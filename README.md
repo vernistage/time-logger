@@ -1,3 +1,5 @@
+Complete coding challenge from the [Fullstack React tutorial](http://www.fullstackreact.com).
+
 ### Running the app
 
 1. Ensure you have `npm` installed.
@@ -17,5 +19,3 @@ npm run server
 ````
 
 The server is now running at [localhost:3000](localhost:3000)
-
-Complete coding challenge from the [Fullstack React tutorial](http://www.fullstackreact.com).
