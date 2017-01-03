@@ -18,4 +18,4 @@ npm run server
 
 The server is now running at [localhost:3000](localhost:3000)
 
-###Original tutorial from (fullstackReact)[https://www.fullstackreact.com/]
+Complete coding challenge from the [Fullstack React tutorial](http://www.fullstackreact.com).
