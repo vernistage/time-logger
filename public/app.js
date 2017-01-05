@@ -96,6 +96,13 @@ const EditableTimer = React.createClass({
 
 /* child component of editable timer*/
 const TimerForm = React.createClass({
+  handleSubmit: function() {
+    this.props.onFormSubmit({
+      id: this.props.id,
+      title: this.refs.title.value,
+      project: this.refs.project.value,
+    });
+  },
   render: function () {
     /* check to see if title already exists*/
     const submitText = this.props.title ? 'Update' : 'Create';
@@ -106,18 +113,26 @@ const TimerForm = React.createClass({
             <div className='field'>
               <label> Title </label>
               {/* passing down props from editable timer that came from ancestors*/}
-              <input type='text' defaultValue={this.props.title} />
+              <input type='text' ref='title'
+                defaultValue={this.props.title}
+              />
             </div>
             <div className='field'>
               <label> Project </label>
               <input type='text' defaultValue={this.props.project} />
             </div>
             <div className='ui two bottom attached buttons'>
-              <button className='ui basic blue button'>
+              <button
+                className='ui basic blue button'
+                onClick={this.handleSubmit}
+              >
               {/* variable defined above*/}
                 {submitText}
               </button>
-              <button className='ui basic red button'>
+              <button
+                className='ui basic red button'
+                onClick={this.props.onFormClose}
+              >
                 Cancel
               </button>
             </div>
