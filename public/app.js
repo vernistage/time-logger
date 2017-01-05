@@ -32,6 +32,20 @@ const TimersDashboard = React.createClass({
       timers: this.state.timers.concat(t),
     });
   },
+  updateTimer: function (attrs) {
+    this.setState({
+      timers: this.state.timers.map((timer) => {
+        if (timer.id === attrs.id) {
+          return Object.assign({}, timer, {
+            title: attrs.title,
+            project: attrs.project,
+          });
+        } else {
+          return timer;
+        }
+      }),
+    });
+  },
   render: function () {
     return (
       <div className='ui three column centered grid'>
@@ -39,6 +53,7 @@ const TimersDashboard = React.createClass({
           {/* immediate children */}
           <EditableTimerList
             timers={this.state.timers}
+            onFormSubmit={this.handleEditFormSubmit}
           />
           {/* TimersDashboard passing down: isOpen and timers as props
             STATE */}
