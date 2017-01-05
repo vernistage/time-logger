@@ -1,3 +1,5 @@
+Complete coding challenge from the [Fullstack React tutorial](http://www.fullstackreact.com).
+
 ### Running the app
 
 1. Ensure you have `npm` installed.
