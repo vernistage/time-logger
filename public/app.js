@@ -114,7 +114,7 @@ const TimerForm = React.createClass({
   },
   render: function () {
     /* check to see if title already exists*/
-    const submitText = this.props.title ? 'Update' : 'Create';
+    const submitText = this.props.id ? 'Update' : 'Create';
     return (
       <div className='ui centered card'>
         <div className='content'>
@@ -128,7 +128,8 @@ const TimerForm = React.createClass({
             </div>
             <div className='field'>
               <label> Project </label>
-              <input type='text' defaultValue={this.props.project} />
+              <input type='text' ref='project'
+                defaultValue={this.props.project} />
             </div>
             <div className='ui two bottom attached buttons'>
               <button
